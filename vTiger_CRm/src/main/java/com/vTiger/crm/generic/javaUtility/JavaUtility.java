@@ -1,6 +1,8 @@
 package com.vTiger.crm.generic.javaUtility;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -12,37 +14,51 @@ import java.util.Random;
  */
 
 public class JavaUtility {
-public int getRandomNumber() {
-	Random random=new Random();
-	int randomNumber = random.nextInt(5000);
-	
-	return randomNumber;
-}
+	public int getRandomNumber() {
+		Random random = new Random();
+		int randomNumber = random.nextInt(5000);
 
-public String getSystemDateYYYYMMDD() {
-	Date dateobj=new Date();
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-	String date = sdf.format(dateobj);
-	
-	return date;
-}
-public String requiredDateYYYYMMDD(int days) {
-	Date dateobj=new Date();
-	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-	sdf.format(dateobj);
-	Calendar cal=sdf.getCalendar();
-	cal.add(Calendar.DAY_OF_MONTH,days);
-	String requiredDate = sdf.format(cal.getTime());
-	
-	return requiredDate;
-	
-}
-public static void main(String[] args) {
-	JavaUtility j=new JavaUtility();
-	System.out.println(j.requiredDateYYYYMMDD(-30));
-	System.out.println(j.getRandomNumber());
-	System.out.println(j.getSystemDateYYYYMMDD());
-}
+		return randomNumber;
+	}
 
+	public String getSystemDateYYYYMMDD() {
+		Date dateobj = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String date = sdf.format(dateobj);
 
+		return date;
+	}
+
+	public String requiredDateYYYYMMDD(int days) {
+		Date dateobj = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		sdf.format(dateobj);
+		Calendar cal = sdf.getCalendar();
+		cal.add(Calendar.DAY_OF_MONTH, days);
+		String requiredDate = sdf.format(cal.getTime());
+
+		return requiredDate;
+
+	}
+
+	public static void main(String[] args) {
+		JavaUtility j = new JavaUtility();
+		System.out.println(j.requiredDateYYYYMMDD(-30));
+		System.out.println(j.getRandomNumber());
+		System.out.println(j.getSystemDateYYYYMMDD());
+	}
+/**
+ * returns the required date from the current date new way of getting date after java8
+ * 
+ * @param days
+ * @return
+ */
+	public String requiredDateYYYYMMDD2(int days) {
+		
+		LocalDate.now().minusDays(0).format(DateTimeFormatter.ofPattern("yy-MM-dd"));// practice
+		
+	    return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	    
+	}
+	
 }
