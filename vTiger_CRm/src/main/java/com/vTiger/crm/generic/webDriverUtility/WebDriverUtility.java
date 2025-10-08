@@ -33,6 +33,11 @@ public class WebDriverUtility {
 	//switch to tab on url
 	public void switchToTabOnURL(WebDriver driver, String PartialURl) {
 		Set<String> set = driver.getWindowHandles();
+		
+		for(String s : set) {
+			
+		}
+		
 		Iterator<String> it = set.iterator();
 		while (it.hasNext()) {
 			String windowID=it.next();

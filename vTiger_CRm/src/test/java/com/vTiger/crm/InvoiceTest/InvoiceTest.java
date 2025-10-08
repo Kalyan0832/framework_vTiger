@@ -2,9 +2,12 @@ package com.vTiger.crm.InvoiceTest;
 
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Listeners;
@@ -12,6 +15,7 @@ import org.testng.annotations.Test;
 
 import com.vTiger.crm.baseTest.BaseClassTest;
 @Listeners()
+@Test(groups = "smoke")
 public class InvoiceTest extends BaseClassTest {
 
 	@Test(retryAnalyzer = com.vTiger.crm.ListenerUtility.RetryListnerImple.class)
@@ -43,6 +47,9 @@ public class InvoiceTest extends BaseClassTest {
 
 	}
 	
+	@FindBy(how = How.ID, using = "password")
+	
+	private WebElement password;
 	
 	
 }
